@@ -175,7 +175,7 @@ class Board:
         elif chip_id == chips.RK3288:
             board_id = self._asus_tinker_board_id()
         elif chip_id == chips.RK3328:
-            board_id = self._rock_pi_id() or self._libre_id()
+                board_id = self._rock_pi_id() or self._libre_id() or self._heltec_id()
         elif chip_id == chips.RK3566:
             board_id = self._rk3566_id()
         elif chip_id == chips.RK3568:
@@ -637,6 +637,14 @@ class Board:
         board = None
         if board_value and "Libre Computer ROC-RK3328-CC" in board_value:
             board = boards.ROC_RK3328_CC
+        return board
+
+    def _heltec_id(self) -> Optional[str]:
+        """Check if the board is a Rockchip RK3328 EVB."""
+        board_value = self.detector.get_device_model()
+        board = None
+        if board_value and "Rockchip RK3328 EVB" in board_value:
+            board = "RK3328_EVB" 
         return board
 
     def _clockwork_pi_id(self) -> Optional[str]:
