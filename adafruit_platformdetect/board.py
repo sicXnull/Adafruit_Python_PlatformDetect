@@ -585,6 +585,8 @@ class Board:
             board = "PANTHER_X2"
         if "Rockchip RK3566 EVB2 LP4X V10 Board" in self.detector.get_device_model():
             board = "BOBCAT_29X"
+        if "Linxdot RK3566 R01" in self.detector.get_device_model():
+            board = "LINXDOT_RK3566"
         elif "quartz64-a" in board_value.lower():
             board = boards.QUARTZ64_A
         return board
